@@ -70,4 +70,4 @@ Você pode organizar os seus prints em uma galeria para que o recrutador veja o 
 
 
 
-Desenvolvido com persistência e rigor por Jonas Neto.
+
