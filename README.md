@@ -1,7 +1,7 @@
-# controle-do-motoca
+# Controle-Do-Motoca
 Dashboard de gestão financeira para motoboys multi-app (Uber, 99, iFood, Particular).
 
-🏍️ **Controle do Motoca - Versão 2.0**
+🏍️ **Controle Do Motoca - Versão 2.0**
 
 Do asfalto ao código: Uma solução real para um problema de 3 anos.
 
