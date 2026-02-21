@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Controle de Corridas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+  <!-- Header fixo -->
+  <header class="app-header">
+    <h1>Controle de Corridas</h1>
+    <div class="data-manual">
+      <button id="btn-dia-anterior" title="Dia anterior"><i class="fas fa-chevron-left"></i></button>
+      <input type="date" id="input-data" />
+      <button id="btn-dia-seguinte" title="Dia seguinte"><i class="fas fa-chevron-right"></i></button>
+      <button id="btn-iniciar-dia">Reset</button>
+    </div>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <main class="app-main">
+    <!-- Aba Corridas -->
+    <section id="tab-corridas" class="tab-content active">
+  <div id="empresas-container"></div>
+
+
+</section>
+
+
+    <!-- Aba Despesas -->
+    <section id="tab-despesas" class="tab-content">
+      <div id="despesas-container">
+        <div id="despesas-lista"></div>          
+          </select>
+          <button id="btn-adicionar-despesa">
+        </div>
+      </div>
+    </section>
+
+<!-- Aba Metas -->
+<section id="tab-metas" class="tab-content">
+  <div class="jonas-neto-signature">Desenvolvido por Jonas Neto</div>
+  <!-- NOVO CONTAINER ENVOLVENDO OS DOIS -->
+<div class="cards-metas">
+  <div class="ganhos-hoje-container">
+    <h3>Ganhos de Hoje</h3>
+    <p>Total: <span id="ganhos-hoje-total">R$ 0,00</span></p>
+  </div>
+  <div class="gastos-hoje-container">
+    <h3>Gastos de Hoje</h3>
+    <p>Total: <span id="gastos-hoje-total">R$ 0,00</span></p>
+  </div>
+</div>
+
+  <div class="meta-container">
+    <label for="input-meta">Defina sua meta diária:</label>
+    <div class="meta-input-group">
+      <input type="number" id="input-meta" min="1" step="0.01" value="100" />
+      <button id="btn-confirmar-meta">Confirmar</button>
+    </div>
+  </div>
+  <div class="destaque-meta">
+    <div class="meta-info">
+      <span>Falta para a meta de R$ <span id="meta-valor">100</span>:</span>
+      <strong id="falta">100,00</strong>
+    </div>
+  </div>
+  <div id="mensagem-meta" class="mensagem-meta-batida">
+    <div class="meta-batida-conteudo">
+      <i class="fas fa-trophy meta-batida-icone"></i>
+      <h2>META BATIDA!</h2>
+      <p>Parabéns, você alcançou seu objetivo diário!</p>
+      <button id="btn-fechar-meta" class="btn-fechar-meta">Fechar</button>
+    </div>
+    <div class="confetti-container"></div>
+  </div></section>
+
+
+    <!-- Aba Resultados -->
+    <section id="tab-resultados" class="tab-content">
+      <div class="resultado">
+        <div class="resultado-card bruto">
+          <i class="fas fa-arrow-up"></i>
+          <span>Total Bruto do Dia</span>
+          <strong>R$ <span id="total-bruto">0,00</span></strong>
+        </div>
+        <div class="resultado-card despesas">
+          <i class="fas fa-arrow-down"></i>
+          <span>Total das Despesas</span>
+          <strong>R$ <span id="total-despesas">0,00</span></strong>
+        </div>
+        <div class="resultado-card liquido">
+          <i class="fas fa-wallet"></i>
+          <span>Total Líquido do Dia</span>
+          <strong>R$ <span id="total-liquido">0,00</span></strong>
+        </div>
+
+        <!-- Ganhos da semana e mês -->
+        <div class="ganhos-periodo">
+          <h4><i class="fas fa-calendar-week"></i> Ganhos da Semana</h4>
+          <div>Bruto: <span id="ganho-bruto-semana">R$ 0,00</span></div>
+          <div>Líquido: <span id="ganho-liquido-semana">R$ 0,00</span></div>
+        </div>
+
+        <div class="ganhos-periodo">
+          <h4><i class="fas fa-calendar-alt"></i> Ganhos do Mês</h4>
+          <div>Bruto: <span id="ganho-bruto-mes">R$ 0,00</span></div>
+          <div>Líquido: <span id="ganho-liquido-mes">R$ 0,00</span></div>
+        </div>
+
+        <!-- Totais por categoria -->
+        <div class="categoria-totais">
+          <h4><i class="fas fa-gas-pump"></i> Gasolina</h4>
+          <div>Dia: R$ <span id="total-gasolina-dia">0,00</span></div>
+          <div>Semana: R$ <span id="total-gasolina-semana">0,00</span></div>
+          <div>Mês: R$ <span id="total-gasolina-mes">0,00</span></div>
+        </div>
+
+        <div class="categoria-totais">
+          <h4><i class="fas fa-utensils"></i> Alimentação</h4>
+          <div>Dia: R$ <span id="total-alimentacao-dia">0,00</span></div>
+          <div>Semana: R$ <span id="total-alimentacao-semana">0,00</span></div>
+          <div>Mês: R$ <span id="total-alimentacao-mes">0,00</span></div>
+        </div>
+
+        <div class="categoria-totais">
+          <h4><i class="fas fa-box"></i> Outros Gastos</h4>
+          <div>Dia: R$ <span id="total-outros-dia">0,00</span></div>
+          <div>Semana: R$ <span id="total-outros-semana">0,00</span></div>
+          <div>Mês: R$ <span id="total-outros-mes">0,00</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Aba Anotações -->
+    <section id="tab-anotacoes" class="tab-content">
+      <div class="anotacoes-container">
+        <textarea id="nova-anotacao" placeholder="Digite sua anotação aqui..." class="anotacao-textarea"></textarea>
+        <div class="anotacao-botoes">
+          <button id="btn-salvar-anotacao" class="btn-anotacao">
+            <i class="fas fa-save"></i> Salvar Anotação
+          </button>
+        </div>
+        <div id="lista-anotacoes" class="lista-anotacoes"></div>
+      </div>
+    </section>
+
+    <!-- Aba Filtros -->
+    <section id="tab-filtros" class="tab-content">
+      <div class="filtro-container">
+        <div class="filtro-form">
+          <div class="form-group">
+            <label for="filtro-categoria">Categoria:</label>
+            <select id="filtro-categoria">
+              <option value="todas">Todas as Despesas</option>
+              <option value="gasolina">Gasolina</option>
+              <option value="alimentacao">Alimentação</option>
+              <option value="outros">Outros</option>
+              <option value="todos-ganhos">Todos os Ganhos</option>
+              <option value="ganhos-semana">Ganhos da Semana</option>
+              <option value="ganhos-mes">Ganhos do Mês</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="filtro-data-inicio">De:</label>
+            <input type="date" id="filtro-data-inicio">
+          </div>
+          <div class="form-group">
+            <label for="filtro-data-fim">Até:</label>
+            <input type="date" id="filtro-data-fim">
+          </div>
+          <button id="btn-filtrar"><i class="fas fa-filter"></i> Filtrar</button>
+        </div>
+        <button id="exportar"><i class="fas fa-download"></i> Exportar dados em CSV</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <button class="nav-item active" data-tab="corridas">
+      <i class="fas fa-car"></i>
+      <span>Corridas</span>
+    </button>
+    <button class="nav-item" data-tab="despesas">
+      <i class="fas fa-credit-card"></i>
+      <span>Despesas</span>
+    </button>
+    <button class="nav-item" data-tab="metas">
+      🎯
+      <span>Metas</span>
+    </button>
+
+    <button class="nav-item" data-tab="resultados">
+      <i class="fas fa-chart-line"></i>
+      <span>Resultados</span>
+    </button>
+    <button class="nav-item" data-tab="anotacoes">
+      <i class="fas fa-sticky-note"></i>
+      <span>Anotações</span>
+    </button>
+    <button class="nav-item" data-tab="filtros">
+      <i class="fas fa-filter"></i>
+      <span>Filtros</span>
+    </button>
+  </nav>
+
+  <!-- Footer -->
+  <div id="footer">Desenvolvido por Jonas Neto</div>
+
+  <!-- Modal para resultados do filtro -->
+  <div id="modal-filtro" class="modal-filtro">
+    <div class="modal-conteudo">
+      <span class="fechar-modal">&times;</span>
+      <h3>Resultados do Filtro</h3>
+      <div id="resultado-filtro-modal"></div>
+    </div>
+  </div>
+
+  <!-- Modal para visualização/edição de anotações -->
+  <div id="modal-anotacao" class="modal-filtro">
+    <div class="modal-conteudo">
+      <span class="fechar-modal">&times;</span>
+      <h3 id="modal-anotacao-titulo">Anotação</h3>
+      <textarea id="anotacao-texto" class="anotacao-textarea-modal"></textarea>
+      <div class="anotacao-botoes-modal">
+        <button id="btn-editar-anotacao" class="btn-anotacao">
+          <i class="fas fa-edit"></i> Editar
+        </button>
+        <button id="btn-deletar-anotacao" class="btn-anotacao btn-vermelho">
+          <i class="fas fa-trash"></i> Deletar
+        </button>
+        <button id="btn-fechar-anotacao" class="btn-anotacao">
+          <i class="fas fa-times"></i> Fechar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
+
+
+
